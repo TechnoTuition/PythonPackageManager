@@ -9,6 +9,7 @@ usage = "usage: %prog [options] arg"
 parser = argparse.ArgumentParser(prog='INS', usage='%(prog)s <command> [options]')
 parser.add_argument("-i","--install",type=str,help="Installing Package for")
 parser.add_argument("-u","--uninstall",type=str,help="Uninstall package for")
+parser.add_argument("-l","--list",action='store_true',help="list all installed packages")
 #parser.print_help()
 args = parser.parse_args()
 
@@ -62,4 +63,11 @@ elif args.uninstall:
         print(f" uninstalled successfully {args.uninstall}")
     else:
         print("file dose exists!")
-#    print("uninstall")
+#    list all installed package
+
+elif args.list:
+    file = os.listdir("/storage/emulated/0/PackageManager/")
+    for i in file:
+       
+        print(i)
+
